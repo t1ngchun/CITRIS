@@ -1,0 +1,24 @@
+.time-range-slider {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.range-slider {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.rooms {
+  display: flex;
+  justify-content: space-around;
+}
+
+.room {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.active-room {
+  background-color: yellow; /* Change the background color to indicate the active room */
+}

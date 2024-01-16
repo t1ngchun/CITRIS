@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .app {
+    text-align: center;
+  }
+  
+  .time-range-slider {
+    margin-top: 20px;
+  }
+  
+  .floor-plan {
+    margin-top: 30px;
+  }
+  
+  /* Styles for the time range slider */
+  select {
+    padding: 10px;
+    font-size: 16px;
+    width: 100px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Active room styling */
+  .floor-plan h2 {
+    color: #007bff;
+  }
+  
+  /* Basic room styling */
+  .floor-plan div {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+  }
+  
+  /* Additional styles for the app header */
+  h1 {
+    color:#333;
+  }
+  
+  .slider {
+    width: 80%;
+    margin: 0 auto;
+  }

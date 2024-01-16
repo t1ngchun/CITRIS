@@ -1,0 +1,30 @@
+.floor-plan {
+    background-color:#98BF64;
+    /* Your default room styling */
+  }
+
+.room{
+    background-color: #98BF64;
+}
+  
+.room.active {
+    background-color: yellow; /* Change background color for active room */
+    color: #98BF64; /* Adjust text color for better contrast */
+  }
+
+
+
+
+
+.room {
+    width: 100px;
+    height: 100px;
+    background-color: lightblue;
+    margin: 10px;
+    text-align: center;
+    line-height: 100px;
+  }
+  
+.room.active {
+    background-color: yellow; /* Change the background color to indicate the active room */
+  } 
