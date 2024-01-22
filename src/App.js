@@ -1,55 +1,48 @@
-import React, { useState } from 'react';
-import TimeRangeSlider from './TimeRangeSlider';
-import FloorPlan from './FloorPlan';
-import './styles.css'; // Import your CSS file here
-
+import React, { useState } from "react";
+import TimeRangeSlider from "./TimeRangeSlider";
+import FloorPlan from "./FloorPlan";
+import "./styles.css"; // Import your CSS file here
+import RTData from "./data/room-transition.json";
 
 const App = () => {
-  const [selectedTime, setSelectedTime] = useState('09:00')
-  
+  const [selectedTime, setSelectedTime] = useState("21:50");
+  const roomData = RTData.map((item) => {
+    const time = `${item.hour.toString().padStart(2, "0")}:${item.min
+      .toString()
+      .padStart(2, "0")}`;
+    return { To: item.To, time };
+  }).reduce((result, item) => {
+    result[item.time] = item.To;
+    return result;
+  }, {}); // reformat the data into sth like {"14:55": "Living room"}
+  console.log("xxx", roomData);
+
+  const timeData = RTData.map((item) => {
+    const formattedTime = `${item.hour.toString().padStart(2, "0")}:${item.min
+      .toString()
+      .padStart(2, "0")}`;
+    return formattedTime;
+  });
+
+  console.log("xxx", timeData);
+
   const handleTimeChange = (newTime) => {
     setSelectedTime(newTime);
   };
 
-  const timeData = ['09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00' ]; // Your discrete time data
-  const roomData = {
-    '09:00': 'Living Room',
-    '10:00': 'Kitchen',
-    '11:00': 'Bedroom',
-    '12:00': 'Restroom',
-    '13:00': 'Living Room',
-    '14:00': 'Bedroom',
-    '15:00': 'Kitchen',
-    '16:00': 'Living Room',
-    '17:00': 'Bedroom',
-    '18:00': 'Restroom',
-    '19:00': 'Kitchen',
-
-
-
-  }; // Corresponding room data for each time
-
   return (
     <div className="app">
-      <h1>Activity Monitoring in Each Room</h1>
-      <TimeRangeSlider timeData={timeData} onTimeChange={handleTimeChange} />
-      <FloorPlan selectedTime={selectedTime} roomData={roomData} />
+      <div>
+        <h1>Activity Monitoring in Each Room</h1>
+        <TimeRangeSlider timeData={timeData} onTimeChange={handleTimeChange} />
+        <div style={{ left: 0, position: "relative" }}>
+          Selected Time: {selectedTime}
+        </div>
+        <div>Selected Room: {roomData[selectedTime]}</div>
+        <FloorPlan selectedTime={selectedTime} roomData={roomData} />
+      </div>
     </div>
   );
 };
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-

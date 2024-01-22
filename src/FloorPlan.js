@@ -1,40 +1,66 @@
-import React from 'react';
-import './FloorPlan.css';
+import React from "react";
+import styled from "styled-components";
+import "./FloorPlan.css";
 
-
-  
+const Rect = styled.rect`
+  margin: 10px;
+`;
 
 const FloorPlan = ({ selectedTime, roomData }) => {
   return (
     <div className="floor-plan">
       <svg width="500" height="300">
-       {/* Bedroom */}
+        {/* Bedroom */}
 
-        <rect x="150" y="30" width="300" height="80" fill={selectedTime === '11:00' || selectedTime === '14:00' || selectedTime === '17:00' ? 'yellow' : 'white'}  stroke="black" stroke-width="1px" />
-        <text x="290" y="80" fontSize="16" textAnchor="middle">Bedroom</text>
-
-    
+        <Rect
+          x="150"
+          y="30"
+          width="300"
+          height="80"
+          fill={roomData[selectedTime] === "Bedroom" ? "#F4CC65" : "#A2B6DE"}
+        />
+        <text x="290" y="80" fontSize="16" textAnchor="middle">
+          Bedroom
+        </text>
 
         {/* Restroom*/}
-       <rect x="50" y="30" width="100" height="200" fill={selectedTime === '12:00' || selectedTime === '18:00'  ? 'yellow' : 'white'} stroke="black" stroke-width="1px"/>
-       <text x="100" y="80" fontSize="16" textAnchor="middle">Restroom</text>
+        <Rect
+          x="50"
+          y="30"
+          width="100"
+          height="200"
+          fill={roomData[selectedTime] === "Restroom" ? "#F4CC65" : "#A2B6DE"}
+        />
+        <text x="100" y="80" fontSize="16" textAnchor="middle">
+          Restroom
+        </text>
 
-       
+        {/* Kitchen */}
+        <Rect
+          x="50"
+          y="110"
+          width="100"
+          height="180"
+          fill={roomData[selectedTime] === "Kitchen" ? "#F4CC65" : "#A2B6DE"}
+        />
+        <text x="100" y="200" fontSize="16" textAnchor="middle">
+          Kitchen
+        </text>
 
-       {/* Kitchen */}
-       <rect x="50" y="110" width="100" height="180" fill={selectedTime === '10:00'  || selectedTime === '15:00'  || selectedTime === '19:00' ? 'yellow' : 'white'} stroke="black" stroke-width="1px"/>
-       <text x="100" y="200" fontSize="16" textAnchor="middle">Kitchen</text>
-
-      
-       {/* Living Room*/}
-       <rect x="350" y="110" width="100" height="180" fill={selectedTime === '9:00' || selectedTime === '13:00' || selectedTime === '16:00' ? 'yellow' : 'white'} stroke="black" stroke-width="1px"/>
-       <text x="400" y="200" fontSize="16" textAnchor="middle">Living Room</text>
-
-        
-        
-        
-        
-        </svg>
+        {/* Living Room*/}
+        <Rect
+          x="350"
+          y="110"
+          width="100"
+          height="180"
+          fill={
+            roomData[selectedTime] === "Living room" ? "#F4CC65" : "#A2B6DE"
+          }
+        />
+        <text x="400" y="200" fontSize="16" textAnchor="middle">
+          Living Room
+        </text>
+      </svg>
       <h2>Selected Room: {roomData[selectedTime]}</h2>
       {/* Your floor plan layout with rooms */}
     </div>
@@ -42,12 +68,3 @@ const FloorPlan = ({ selectedTime, roomData }) => {
 };
 
 export default FloorPlan;
-
-
-
-
-
-
-
-
-

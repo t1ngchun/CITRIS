@@ -1,0 +1,158 @@
+[
+    {
+      "From": "Bedroom",
+      "To": "Restroom",
+      "hour": 7,
+      "min": 25,
+      "sec": 54
+    },
+    {
+      "From": "Restroom",
+      "To": "Living room",
+      "hour": 7,
+      "min": 45,
+      "sec": 34
+    },
+    {
+      "From": "Living room",
+      "To": "Kitchen",
+      "hour": 7,
+      "min": 54,
+      "sec": 23
+    },
+    {
+      "From": "Kitchen",
+      "To": "Living room",
+      "hour": 8,
+      "min": 12,
+      "sec": 45
+    },
+    {
+      "From": "Living room",
+      "To": "Out",
+      "hour": 8,
+      "min": 25,
+      "sec": 48
+    },
+    {
+      "From": "Out",
+      "To": "Living room",
+      "hour": 10,
+      "min": 26,
+      "sec": 24
+    },
+    {
+      "From": "Living room",
+      "To": "Kitchen",
+      "hour": 10,
+      "min": 27,
+      "sec": 45
+    },
+    {
+      "From": "Kitchen",
+      "To": "Living room",
+      "hour": 10,
+      "min": 29,
+      "sec": 12
+    },
+    {
+      "From": "Living room",
+      "To": "Kitchen",
+      "hour": 12,
+      "min": 32,
+      "sec": 46,
+      "FIELD6": "",
+      "FIELD7": ""
+    },
+    {
+      "From": "Kitchen",
+      "To": "Living room",
+      "hour": 13,
+      "min": 23,
+      "sec": 29
+    },
+    {
+      "From": "Living room",
+      "To": "Bedroom",
+      "hour": 13,
+      "min": 49,
+      "sec": 25
+    },
+    {
+      "From": "Bedroom",
+      "To": "Restroom",
+      "hour": 14,
+      "min": 50,
+      "sec": 19
+    },
+    {
+      "From": "Restroom",
+      "To": "Living room",
+      "hour": 14,
+      "min": 55,
+      "sec": 19
+    },
+    {
+      "From": "Living room",
+      "To": "Kitchen",
+      "hour": 15,
+      "min": 20,
+      "sec": 25
+    },
+    {
+      "From": "Kitchen",
+      "To": "Living room",
+      "hour": 15,
+      "min": 22,
+      "sec": 14
+    },
+    {
+      "From": "Living room",
+      "To": "Kitchen",
+      "hour": 18,
+      "min": 20,
+      "sec": 59
+    },
+    {
+      "From": "Kitchen",
+      "To": "Living room",
+      "hour": 18,
+      "min": 53,
+      "sec": 29
+    },
+    {
+      "From": "Living room",
+      "To": "Out",
+      "hour": 18,
+      "min": 59,
+      "sec": 18
+    },
+    {
+      "From": "Out",
+      "To": "Living room",
+      "hour": 20,
+      "min": 5,
+      "sec": 18
+    },
+    {
+      "From": "Living room",
+      "To": "Restroom",
+      "hour": 20,
+      "min": 20,
+      "sec": 12
+    },
+    {
+      "From": "Restroom",
+      "To": "Living room",
+      "hour": 20,
+      "min": 40,
+      "sec": 19
+    },
+    {
+      "From": "Living room",
+      "To": "Bedroom",
+      "hour": 21,
+      "min": 50,
+      "sec": 12
+    }
+]
