@@ -1,30 +1,30 @@
-import React from 'react';
+import React, { useCallback } from "react";
 
 const TimeRangeSlider = ({ timeData, onTimeChange }) => {
-  const handleChange = (e) => {
-    const selectedTimeIndex = parseInt(e.target.value);
-    const selectedTime = timeData[selectedTimeIndex];
-    onTimeChange(selectedTime);
-  };
+  const handleChange = useCallback(
+    (e) => {
+      const selectedTimeIndex = parseInt(e.target.value);
+      const selectedTime = timeData[selectedTimeIndex];
+      onTimeChange(selectedTime);
+    },
+    [timeData, onTimeChange]
+  );
 
   return (
     <div className="time-range-slider">
-      <label>Select Time:</label>
-      <input 
-        type="range" 
-        min={0} 
-        max={timeData.length - 1} 
-        onChange={handleChange} 
+      <input
+        type="range"
+        min={0}
+        max={timeData.length - 1}
+        onChange={handleChange}
         className="slider"
+        alignContent="center"
       />
     </div>
   );
 };
 
 export default TimeRangeSlider;
-
-
-
 
 // import React from 'react';
 
@@ -49,6 +49,3 @@ export default TimeRangeSlider;
 // };
 
 // export default TimeRangeSlider;
-
-
-
