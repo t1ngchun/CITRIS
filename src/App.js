@@ -1,45 +1,142 @@
 import React, { useState } from "react";
-import TimeRangeSlider from "./TimeRangeSlider";
 import FloorPlan from "./FloorPlan";
 import "./styles.css"; // Import your CSS file here
-import RTData from "./data/room-transition.json";
+import DateSelector from "./DateSelector"; // Adjust the import path as necessary
+import Clock from "./Clock";
+import BarChart from "./BarChart";
+
+const buttonStyle = {
+  margin: "10px",
+  padding: "15px 15px", // Padding can be adjusted to increase the button size
+  borderRadius: "50%", // This will make the button circular
+  border: "1px solid #000",
+  width: "80px", // Width of the button
+  height: "80px", // Height of the button
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  fontSize: "12px", // Adjust font size as needed
+  cursor: "pointer",
+  outline: "none",
+};
+
+const activityButtonStyle = {
+  margin: "10px",
+  border: "1px solid #000",
+  width: "175px", // Width of the button
+  height: "40px", // Height of the button
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  fontSize: "12px", // Adjust font size as needed
+  cursor: "pointer",
+  outline: "none",
+  borderRadius: "5px",
+};
+
+const data = {
+  labels: ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"],
+  datasets: [
+    {
+      label: "Number of Events",
+      data: [12, 19, 3, 5, 2, 3, 7], // Replace with your actual data
+      backgroundColor: "rgba(255, 99, 132, 0.5)",
+      borderColor: "rgba(255, 99, 132, 1)",
+      borderWidth: 1,
+    },
+  ],
+};
 
 const App = () => {
-  const [selectedTime, setSelectedTime] = useState("21:50");
-  const roomData = RTData.map((item) => {
-    const time = `${item.hour.toString().padStart(2, "0")}:${item.min
-      .toString()
-      .padStart(2, "0")}`;
-    return { To: item.To, time };
-  }).reduce((result, item) => {
-    result[item.time] = item.To;
-    return result;
-  }, {}); // reformat the data into sth like {"14:55": "Living room"}
-  console.log("xxx", roomData);
+  const [activeComponent, setActiveComponent] = useState("today"); // This state tracks the active component
 
-  const timeData = RTData.map((item) => {
-    const formattedTime = `${item.hour.toString().padStart(2, "0")}:${item.min
-      .toString()
-      .padStart(2, "0")}`;
-    return formattedTime;
-  });
+  const changeActiveComponent = (componentName) => {
+    setActiveComponent(componentName);
+  };
 
-  console.log("xxx", timeData);
+  // Dummy function to handle button clicks
+  const handleButtonClick = (label) => {
+    console.log(`Button ${label} clicked!`);
+  };
 
-  const handleTimeChange = (newTime) => {
-    setSelectedTime(newTime);
+  const renderComponent = () => {
+    switch (activeComponent) {
+      case "floorPlan":
+        return <FloorPlan showSlider/>;
+      case "Past7":
+        return <BarChart data={data} />;
+      default:
+        return (
+          <div>
+            <h2>Today</h2>
+            <Clock />
+            <FloorPlan />
+            <p>XXX should take 3 pills in the morning</p>
+            
+          </div>
+        );
+    }
   };
 
   return (
     <div className="app">
-      <div>
-        <h1>Activity Monitoring in Each Room</h1>
-        <TimeRangeSlider timeData={timeData} onTimeChange={handleTimeChange} />
-        <div style={{ left: 0, position: "relative" }}>
-          Selected Time: {selectedTime}
+      <div style={{ marginRight: "50px", width: "270px", height: "540px" }}>
+        <DateSelector changeActiveComponent={changeActiveComponent} />
+        {/* Activity Levels Section */}
+        <div style={{ marginTop: "80px" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: "40px",
+            }}
+          >
+            <button
+              style={buttonStyle}
+              onClick={() => handleButtonClick("Hygiene")}
+            >
+              Hygiene
+            </button>
+            <button
+              style={buttonStyle}
+              onClick={() => handleButtonClick("Shower")}
+            >
+              Shower
+            </button>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: "40px",
+            }}
+          >
+            <button
+              style={buttonStyle}
+              onClick={() => handleButtonClick("Brush teeth")}
+            >
+              Brush teeth
+            </button>
+            <button
+              style={buttonStyle}
+              onClick={() => handleButtonClick("Medication")}
+            >
+              Medication
+            </button>
+          </div>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <button
+              style={activityButtonStyle}
+              onClick={() => changeActiveComponent("floorPlan")}
+            >
+              Activity Level
+            </button>
+          </div>
         </div>
-        <div>Selected Room: {roomData[selectedTime]}</div>
-        <FloorPlan selectedTime={selectedTime} roomData={roomData} />
+      </div>
+      <div style={{ width: "520px" }}>
+        {/* Render the active component */}
+        {renderComponent()}
       </div>
     </div>
   );
